@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Mio Desktop - Portfolio</title>
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="desktop-body">
+    <!-- Background Slideshow Layers -->
+    <div id="bg-layer-1" class="bg-layer active"></div>
+    <div id="bg-layer-2" class="bg-layer"></div>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <img src="img/negativo.png" alt="Logo" class="top-bar-logo">
+            <button class="burger-menu" id="burger-menu-btn">
+                <i data-lucide="menu"></i>
+            </button>
+            <div class="top-bar-menu" id="top-bar-menu">
+                <button class="menu-btn" data-target="window-resize">Ridimensiona</button>
+                <div class="menu-dropdown-wrapper">
+                    <button class="menu-btn" id="notes-menu-btn">Appunti</button>
+                    <div class="menu-dropdown" id="notes-dropdown">
+                        <button class="dropdown-item" id="add-note-btn"><i data-lucide="plus"></i> Aggiungi Pagina</button>
+                        <div class="dropdown-divider"></div>
+                        <div id="notes-list">
+                            <!-- Note pages will appear here -->
+                        </div>
+                    </div>
+                </div>
+                <button class="menu-btn" data-type="link" data-url="tutorial.html">Tutorial</button>
+                <button class="menu-btn" data-target="window-contact">Contatti</button>
+                <button class="menu-btn" data-target="window-account">Account</button>
+            </div>
+        </div>
+        <div class="top-bar-right">
+            <span id="current-date"></span>
+            <span id="clock">00:00</span>
+        </div>
+    </div>
+
+    <div class="desktop-container">
+        <!-- Persistent Notepad Widget -->
+        <div class="notepad-widget">
+            <div class="notepad-header">
+                <i data-lucide="sticky-note"></i>
+                <span id="active-note-title">Appunti <span class="note-page-suffix">Pagina 1</span></span>
+            </div>
+            <textarea id="notepad-textarea" placeholder="Scrivi qui i tuoi appunti..."></textarea>
+        </div>
+
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <div class="icon-item pdf-icon" data-type="link" data-url="bio.html">
+                <img src="img/icona_pdf.png" alt="Bio PDF" class="pdf-icon-img">
+                <span>Bio.pdf</span>
+            </div>
+            <div class="icon-item pdf-icon" data-type="link" data-url="portfolio.html">
+                <img src="img/icona_pdf.png" alt="Portfolio PDF" class="pdf-icon-img">
+                <span>Portfolio.pdf</span>
+            </div>
+            <div class="icon-item" data-type="folder" data-target="folder-projects">
+                <img src="img/img_cartella.png" alt="Cartella Progetti" class="folder-icon-img">
+                <span>Progetti</span>
+            </div>
+            <a href="https://instagram.com/tuo_profilo" target="_blank" class="icon-item contact-icon instagram">
+                <img src="img/instagram.png" alt="Instagram" class="social-icon-img">
+                <span>Instagram</span>
+            </a>
+            <a href="https://wa.me/393925499614" target="_blank" class="icon-item contact-icon whatsapp">
+                <img src="img/whatsapp.png" alt="WhatsApp" class="social-icon-img">
+                <span>WhatsApp</span>
+            </a>
+        </div>
+
+        <!-- Dock (macOS style) -->
+        <div class="dock-container">
+            <div id="dock" class="dock">
+                <!-- Minimized items will appear here -->
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Bar (Android style) -->
+        <div class="mobile-nav">
+            <button class="mobile-nav-btn" id="mobile-recent-btn">
+                <i data-lucide="align-justify" style="transform: rotate(90deg);"></i>
+            </button>
+            <button class="mobile-nav-btn" id="mobile-home-btn">
+                <i data-lucide="square"></i>
+            </button>
+            <button class="mobile-nav-btn" id="mobile-back-btn">
+                <i data-lucide="chevron-left"></i>
+            </button>
+        </div>
+
+        <!-- Task Switcher Overlay (Mobile) -->
+        <div id="task-switcher" class="task-switcher hidden">
+            <div class="task-switcher-header">
+                <h3>App Aperte</h3>
+            </div>
+            <div id="task-list" class="task-list">
+                <!-- Open tasks will be injected here -->
+            </div>
+        </div>
+
+        <!-- Windows (Hidden by default) -->
+        <div id="folder-projects" class="window hidden">
+            <div class="window-header">
+                <div class="window-title">
+                    <img src="img/img_cartella.png" alt="" class="window-header-icon">
+                    <span>Progetti</span>
+                </div>
+                <div class="window-controls">
+                    <button class="minimize-btn"><i data-lucide="minus"></i></button>
+                    <button class="close-btn"><i data-lucide="x"></i></button>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="grid-icons">
+                    <div class="icon-item" data-type="link" data-url="lavoro-1.html">
+                        <img src="img/icona_pdf.png" alt="Lavoro 1" class="pdf-icon-img">
+                        <span>Lavoro 1</span>
+                    </div>
+                    <div class="icon-item" data-type="link" data-url="lavoro-2.html">
+                        <img src="img/icona_pdf.png" alt="Lavoro 2" class="pdf-icon-img">
+                        <span>Lavoro 2</span>
+                    </div>
+                    <div class="icon-item" data-type="link" data-url="lavoro-3.html">
+                        <img src="img/icona_pdf.png" alt="Lavoro 3" class="pdf-icon-img">
+                        <span>Lavoro 3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="window-resize" class="window hidden" data-icon="maximize">
+            <div class="window-header">
+                <div class="window-title">
+                    <i data-lucide="maximize"></i>
+                    <span>Ridimensiona Icone</span>
+                </div>
+                <div class="window-controls">
+                    <button class="minimize-btn"><i data-lucide="minus"></i></button>
+                    <button class="close-btn"><i data-lucide="x"></i></button>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="resize-control">
+                    <label for="icon-size-slider">Dimensione Icone Desktop:</label>
+                    <input type="range" id="icon-size-slider" min="60" max="150" value="100">
+                    <span id="icon-size-value">100px</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="window-contact" class="window hidden" data-icon="mail">
+            <div class="window-header">
+                <div class="window-title">
+                    <i data-lucide="mail"></i>
+                    <span>Contatti</span>
+                </div>
+                <div class="window-controls">
+                    <button class="minimize-btn"><i data-lucide="minus"></i></button>
+                    <button class="close-btn"><i data-lucide="x"></i></button>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="contact-form-container">
+                    <h3>Inviaci un Messaggio</h3>
+                    <p>Scrivi a: <strong>itsnovenstudio@gmail.com</strong></p>
+                    <div class="form-group">
+                        <label>La tua Email:</label>
+                        <input type="email" id="contact-user-email" placeholder="esempio@mail.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Messaggio:</label>
+                        <textarea id="contact-message" placeholder="Scrivi qui il tuo messaggio..." rows="5"></textarea>
+                    </div>
+                    <button id="contact-send-btn" class="action-btn">Invia</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="window-account" class="window hidden" data-icon="user">
+            <div class="window-header">
+                <div class="window-title">
+                    <i data-lucide="user"></i>
+                    <span>Account</span>
+                </div>
+                <div class="window-controls">
+                    <button class="minimize-btn"><i data-lucide="minus"></i></button>
+                    <button class="close-btn"><i data-lucide="x"></i></button>
+                </div>
+            </div>
+            <div class="window-content">
+                <div id="account-login-form" class="account-form">
+                    <h3>Accedi o Registrati</h3>
+                    <p>Inserisci i tuoi dati per salvare le tue impostazioni.</p>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="account-email" placeholder="esempio@mail.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" id="account-password" placeholder="Password">
+                    </div>
+                    <button id="account-submit-btn" class="action-btn">Salva / Accedi</button>
+                </div>
+                <div id="account-logged-in" class="account-form hidden">
+                    <h3>Benvenuto!</h3>
+                    <p id="logged-email-display"></p>
+                    <p>Le tue impostazioni sono ora sincronizzate.</p>
+                    <button id="account-logout-btn" class="action-btn secondary">Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PDF Window Template -->
+        <div id="pdf-window" class="window pdf-window hidden">
+            <div class="window-header">
+                <div class="window-controls left">
+                    <button class="close-btn"><i data-lucide="x"></i></button>
+                    <button class="minimize-btn"><i data-lucide="minus"></i></button>
+                </div>
+                <div class="window-title">
+                    <img src="img/icona_pdf.png" alt="" class="window-header-icon">
+                    <span id="pdf-window-title">Documento</span>
+                </div>
+                <div class="window-controls right">
+                    <!-- Space for symmetry or other controls -->
+                </div>
+            </div>
+            <div class="window-content pdf-content">
+                <iframe id="pdf-iframe" class="pdf-iframe" src="" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <!-- Cookie Overlay -->
+        <div id="cookie-overlay" class="overlay hidden">
+            <div class="overlay-content glass">
+                <i data-lucide="shield-check" class="overlay-icon"></i>
+                <h3>Informativa sui Cookie</h3>
+                <p>Questo sito utilizza i cookie per migliorare l'esperienza dell'utente e per salvare le impostazioni personali tramite l'account.</p>
+                <button id="cookie-accept-btn" class="action-btn">Accetta e Continua</button>
+            </div>
+        </div>
+
+        <!-- Initial Account Overlay -->
+        <div id="initial-account-overlay" class="overlay hidden">
+            <div class="overlay-content glass account-overlay-content">
+                <i data-lucide="user-plus" class="overlay-icon"></i>
+                <h3>Crea il tuo Account</h3>
+                <p>Accedi o registrati per salvare i tuoi progressi, appunti e personalizzazioni del desktop.</p>
+                <div class="account-form">
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="initial-account-email" placeholder="esempio@mail.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" id="initial-account-password" placeholder="Password">
+                    </div>
+                    <div class="overlay-buttons">
+                        <button id="initial-account-submit-btn" class="action-btn">Salva / Accedi</button>
+                        <button id="initial-account-skip-btn" class="action-btn secondary">Continua senza account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

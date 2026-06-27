@@ -1,0 +1,104 @@
+SPIEGAZIONE FUNZIONAMENTO TECNICO DEL PORTFOLIO DESKTOP
+
+Questo documento descrive le logiche avanzate implementate nel sito per simulare un sistema operativo desktop.
+
+1. SISTEMA A FINESTRE (Window Management)
+- Ogni finestra è un elemento <div> con classe .window.
+- Apertura: Gli elementi con data-type="link" o data-type="folder" attivano la rimozione della classe .hidden.
+- Z-Index: La funzione bringToFront() calcola lo z-index massimo tra tutte le finestre aperte e assegna max+1 alla finestra cliccata, garantendo che sia sempre in primo piano.
+- Dragging: Implementato tramite eventi mousedown, mousemove e mouseup. Calcola l'offset iniziale del mouse rispetto all'angolo della finestra per permettere un trascinamento fluido.
+- Limiti di Trascinamento: Inserito un controllo nel mousemove che impedisce alle finestre di uscire completamente dall'area visibile. Almeno il 50% della larghezza e dell'altezza della finestra deve rimanere all'interno del viewport, e la barra del titolo non può mai sparire oltre il bordo superiore.
+- Applicazioni Social: Le icone di Instagram e WhatsApp utilizzano immagini personalizzate e sono collegate direttamente a link esterni, comportandosi come applicazioni standalone sul desktop. WhatsApp è configurato per aprire una chat diretta con il numero +39 392 549 9614. Sono posizionate in una colonna dedicata a destra per distinguerle dai contenuti locali (PDF e cartelle). Su mobile, lo spazio tra le colonne è ridotto e l'allineamento è forzato sulla base del testo per garantire una griglia uniforme nonostante le diverse dimensioni visive delle icone.
+
+2. RIDUZIONE A ICONA E DOCK
+- Quando si clicca sul tasto "Riduci" (-), la finestra riceve la classe .minimized e .hidden.
+- Dinamicamente, viene creato un elemento .dock-item nel Dock.
+- Icone Dock: Se la finestra ha un attributo data-icon, il Dock usa un'icona Lucide. Se è un PDF, usa l'immagine icona_pdf.png. Se è una cartella, usa img_cartella.png.
+- Ripristino: Cliccando sul Dock o sull'icona originale, la funzione restoreWindow() rimuove le classi di minimizzazione e distrugge l'elemento nel Dock.
+
+3. PDF E IFRAME
+- Per i documenti, viene usato un template di finestra che contiene un <iframe>.
+- All'apertura, il src dell'iframe viene impostato all'URL del file HTML corrispondente (es. bio.html).
+- Questo permette di visualizzare contenuti complessi senza ricaricare la pagina principale.
+- Le finestre PDF hanno una larghezza fissa di 650px per simulare un formato documentale rettangolare e un'altezza dinamica (calc(100vh - 180px)) per evitare sovrapposizioni con le barre di sistema.
+- Design Interno: Tutte le pagine caricate negli iframe utilizzano uno sfondo bianco puro e un layout "edge-to-edge" (padding: 0). La larghezza è forzata al 100% su html, body e contenitori principali. È stato implementato un selettore di classe (.pdf-iframe) per garantire che anche le finestre clonate dinamicamente ereditino correttamente le dimensioni a tutta larghezza, eliminando margini bianchi laterali e assicurando che le immagini tocchino i bordi. Lo scorrimento verticale è abilitato solo quando necessario.
+
+4. DATA E ORA DINAMICA
+- Una funzione updateDateTime() viene eseguita ogni 1000ms (1 secondo).
+- Utilizza l'oggetto Date() di JavaScript per estrarre ore, minuti, giorno della settimana e mese.
+- I nomi di giorni e mesi sono mappati in array in italiano per una localizzazione corretta.
+
+5. SLIDESHOW SFONDO (Cross-Fade)
+- Utilizza due layer sovrapposti (bg-layer-1 e bg-layer-2).
+- La transizione avviene alternando la classe .active e cambiando l'opacità via CSS (transition: opacity 2s).
+- Un sistema di pre-caricamento imposta l'immagine successiva sul layer nascosto 2 secondi dopo l'inizio della dissolvenza, eliminando i flash neri.
+
+6. RIDIMENSIONAMENTO DINAMICO
+- Uno slider (input range) controlla la variabile di dimensione globale.
+- JavaScript aggiorna la proprietà grid-template-columns del desktop per riposizionare le icone senza sovrapposizioni.
+- Il ridimensionamento influisce proporzionalmente anche sul widget degli appunti (larghezza, altezza e dimensione del font).
+
+7. WIDGET APPUNTI (Notepad)
+- Un riquadro persistente sul lato destro del desktop, non chiudibile.
+- Supporta più pagine: un menu a discesa nella barra superiore permette di aggiungere nuove pagine e navigare tra quelle esistenti.
+- Ogni pagina salva il proprio contenuto in tempo reale in un array di oggetti JavaScript.
+- Eliminazione Pagine: Aggiunta un'icona cestino accanto a ogni pagina nel menu per permetterne la rimozione.
+- Ottimizzazione Mobile: L'header mostra il numero della pagina attiva su una nuova riga rispetto alla parola "Appunti" per massimizzare la leggibilità su schermi stretti (M/S), mantenendo l'icona affiancata al titolo principale. La logica del menu burger è stata rifinata per non chiudersi quando si interagisce con il sottomenu degli appunti, permettendo una gestione più fluida.
+
+8. ACCOUNT E PERSISTENZA (LocalStorage)
+- I dati dell'utente (email, password, impostazioni di ridimensionamento, appunti) vengono salvati nel LocalStorage del browser.
+- Migrazione Sessione: Se un utente crea appunti o cambia impostazioni come ospite e poi effettua il login/registrazione, i dati della sessione corrente vengono migrati automaticamente nel nuovo account.
+- Se l'utente è loggato, tutte le modifiche vengono salvate istantaneamente sul suo profilo locale.
+- Senza login, le modifiche vengono perse alla chiusura del browser (reset della sessione).
+
+9. MENU RESPONSIVE (Burger Menu)
+- Per larghezze di schermo inferiori o uguali a 768px, il menu della barra superiore si trasforma in un menu burger.
+- Logica: Un pulsante con icona burger (Lucide menu) attiva/disattiva la classe .active sul contenitore del menu.
+- Layout Mobile: Il menu passa da un layout orizzontale a un box verticale a tutto schermo in larghezza, posizionato sotto la barra superiore, con sfondo opaco e blur.
+- Chiusura Automatica: Il menu si chiude automaticamente quando l'utente seleziona una voce o clicca all'esterno del menu, garantendo un'interazione pulita su dispositivi touch.
+
+10. NAVIGAZIONE MOBILE (Android Style)
+- Per schermi <= 768px, il Dock macOS viene sostituito da una barra di navigazione a tre pulsanti.
+- Tasto Recenti (|||): Predisposto per la gestione delle app aperte.
+- Tasto Home (Square): Chiude istantaneamente tutte le finestre aperte, riportando l'utente al desktop pulito.
+- Tasto Indietro (<): Individua la finestra con lo z-index più alto (quella in primo piano) e la chiude.
+
+11. TASK SWITCHER E NAVIGAZIONE CONTESTUALE (Mobile)
+- Per schermi <= 768px, il sistema gestisce una "Navigation Stack" per tracciare il percorso tra cartelle e PDF.
+- Task Switcher: Il primo tasto mobile attiva un overlay che elenca tutte le finestre caricate in memoria.
+- Layout Task Switcher: Le app sono visualizzate come grandi schede (80vw) disposte orizzontalmente. Ogni scheda ha l'icona/nome centrati in alto e un'area di anteprima sottostante.
+- Scorrimento Orizzontale: Implementato tramite flexbox e scroll-snap, permettendo di scorrere tra le app aperte con un effetto calamita al centro.
+- Chiusura Swipe: Le schede possono essere chiuse trascinandole verso l'alto. La logica è estremamente sensibile: uno spostamento verticale di soli 30px attiva l'animazione di espulsione automatica della scheda e la rimozione dell'app dalla memoria.
+- PDF Full-Screen: Su mobile, i PDF occupano l'intero viewport tra le barre di sistema. Il tasto "Chiudi" (X) viene rimosso per forzare l'uso della navigazione di sistema. È stata implementata una regola specifica per evitare che altre impostazioni di layout per schermi piccoli (<= 600px) interferiscano con la visualizzazione a tutto schermo dei documenti.
+- Interazione Background: Cliccare sullo sfondo del desktop su mobile chiude automaticamente tutte le cartelle aperte, simulando un ritorno alla schermata home.
+
+13. OTTIMIZZAZIONE SCHERMI PICCOLI (Screen S)
+- Per dispositivi con larghezza compresa tra 425px e 320px, il sistema applica un restringimento fluido e dinamico tramite calcoli CSS (calc e vw).
+- Le icone del desktop passano gradualmente da 100px a 78px, mentre il widget Appunti si riduce da 180px a 130px.
+- La spaziatura (gap) e la dimensione del testo si adattano proporzionalmente alla larghezza del viewport, garantendo che gli elementi non si sovrappongano mai durante il ridimensionamento.
+- Il padding superiore del desktop varia dinamicamente per mantenere l'allineamento perfetto tra le icone e il bordo superiore del widget Appunti.
+- Queste modifiche utilizzano la clausola !important per sovrascrivere le impostazioni dinamiche di ridimensionamento scelte dall'utente, garantendo l'usabilità minima su schermi estremamente ridotti.
+
+14. OVERLAY INIZIALI E SEQUENZIALI
+- All'apertura del sito, vengono mostrati due overlay in sequenza tramite JavaScript:
+  1. Informativa Cookie: Blocca l'interazione finché l'utente non accetta i cookie. Per gli utenti non loggati (guest), questa richiesta viene mostrata ad ogni caricamento della pagina. Per gli utenti loggati, la preferenza viene salvata in modo permanente nel LocalStorage.
+  2. Overlay Account: Una volta accettati i cookie, se l'utente non è già loggato, appare una schermata di login/registrazione.
+- L'overlay account permette di accedere/registrarsi subito o di proseguire come ospite tramite il tasto "Continua senza account".
+- Entrambi gli overlay utilizzano lo stile glassmorphism con backdrop-filter per mantenere la coerenza visiva con il resto del sistema operativo.
+
+15. FUNZIONE CONTATTI
+- Aggiunta una nuova finestra "Contatti" accessibile dalla barra superiore.
+- Permette l'invio di messaggi diretti a itsnovenstudio@gmail.com.
+- Integrazione Intelligente: Se l'utente è loggato, il campo "La tua Email" viene pre-compilato automaticamente con l'indirizzo dell'account. In modalità guest, il campo rimane vuoto per l'inserimento manuale.
+- Utilizza un link mailto: per gestire l'invio effettivo tramite il client email predefinito dell'utente.
+
+16. PAGINE PROGETTI (Lavori)
+- Le pagine Lavoro1, Lavoro2 e Lavoro3 sono state popolate con contenuti specifici.
+- Utilizzano un layout ottimizzato per la visibilità immediata: le immagini sono ridimensionate al 75% della larghezza e limitate in altezza (65vh) per evitare lo scorrimento verticale.
+- Tutti i progetti utilizzano ora file immagine standard (PNG) per garantire una visualizzazione uniforme, pulita e priva di scorrimenti interni o interfacce browser, assicurando un'esperienza utente coerente su tutti i dispositivi.
+
+17. PAGINA PORTFOLIO (Vetrina Completa)
+- La pagina portfolio.html è stata trasformata in una vetrina organizzata per categorie.
+- Utilizza un sistema di griglie CSS (display: grid) per disporre le immagini in 3 colonne, garantendo che occupino tutto lo spazio orizzontale disponibile.
+- Ogni sezione include un titolo descrittivo e una breve spiegazione del progetto, offrendo un contesto professionale ai lavori visualizzati.
+- Le immagini hanno effetti di transizione al passaggio del mouse (hover) per migliorare l'interattività della pagina.
