@@ -102,3 +102,8 @@ Questo documento descrive le logiche avanzate implementate nel sito per simulare
 - Utilizza un sistema di griglie CSS (display: grid) per disporre le immagini in 3 colonne, garantendo che occupino tutto lo spazio orizzontale disponibile.
 - Ogni sezione include un titolo descrittivo e una breve spiegazione del progetto, offrendo un contesto professionale ai lavori visualizzati.
 - Le immagini hanno effetti di transizione al passaggio del mouse (hover) per migliorare l'interattività della pagina.
+
+18. STABILITÀ NAVIGAZIONE MOBILE
+- Per risolvere il problema della scomparsa della barra di navigazione mobile durante l'uso del Task Switcher, è stato implementato un sistema di layering rinforzato.
+- Z-Index Elevato: La barra .mobile-nav ha ora uno z-index di 2500, posizionandola sopra il Task Switcher (1500) e gli overlay standard (2000). Questo garantisce che i pulsanti di navigazione (Recenti, Home, Indietro) rimangano sempre visibili e cliccabili.
+- Posizionamento Bottom-Safe: Il Task Switcher non utilizza più un'altezza calcolata basata su 100vh, che può variare sui browser mobile a causa della barra degli indirizzi dinamica. Al suo posto, utilizza un posizionamento bottom: 50px, ancorandosi esattamente sopra la barra di navigazione mobile indipendentemente dalle variazioni di altezza del viewport. Questo previene sovrapposizioni accidentali che potrebbero bloccare l'utente all'interno dell'overlay.

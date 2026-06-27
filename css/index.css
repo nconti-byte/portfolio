@@ -419,7 +419,7 @@ h1, h2, h3 {
     backdrop-filter: blur(10px);
     justify-content: space-around;
     align-items: center;
-    z-index: 1000;
+    z-index: 2500; /* Assicura che sia sopra il task switcher e altri elementi */
 }
 
 .mobile-nav-btn {
@@ -443,8 +443,8 @@ h1, h2, h3 {
     position: fixed;
     top: 45px;
     left: 0;
-    width: 100%;
-    height: calc(100vh - 95px);
+    right: 0;
+    bottom: 50px; /* Al posto di height calc, per evitare problemi su mobile con la barra degli indirizzi */
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(20px);
     z-index: 1500;

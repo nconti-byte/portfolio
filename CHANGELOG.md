@@ -191,3 +191,9 @@ Tutte le modifiche e gli aggiornamenti apportati al progetto Portfolio saranno d
 
 ### 17:42 (27/06/2026)
 - **Documentazione di Stile**: Creato il file `STYLE_GUIDE.md` contenente la palette colori ufficiale e i font utilizzati con i relativi pesi per riferimento futuro.
+
+### 20:25 (27/06/2026)
+- **Fix Navigazione Mobile**: Risolto un problema nel Task Switcher su mobile dove la barra di navigazione inferiore spariva o diventava inutilizzabile.
+- **Z-Index e Layering**: Aumentato lo z-index della barra di navigazione mobile (`.mobile-nav`) a 2500 per garantire che rimanga sempre sopra il Task Switcher e altri overlay.
+- **Posizionamento Task Switcher**: Sostituita l'altezza calcolata con un posizionamento `bottom: 50px` per il Task Switcher, garantendo che non si sovrapponga mai alla barra di navigazione, indipendentemente dalle variazioni dell'altezza del viewport su browser mobile (es. comparsa/scomparsa barra degli indirizzi).
+- **Git**: Iniziato il tracciamento delle modifiche tramite commit Git dettagliati per ogni aggiornamento.
