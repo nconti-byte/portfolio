@@ -792,8 +792,9 @@ h1, h2, h3 {
 
     .pdf-window {
         width: 100vw !important;
-        height: calc(100vh - 95px) !important;
         top: 45px !important;
+        bottom: 50px !important; /* Ancorato sopra la mobile-nav */
+        height: auto !important; /* L'altezza si adatta tra top e bottom */
         left: 0 !important;
         border-radius: 0;
     }
@@ -863,9 +864,18 @@ h1, h2, h3 {
         height: 100%;
     }
 
+    .window-content {
+        padding-bottom: 80px !important; /* Spazio extra per evitare che il contenuto finisca sotto la mobile-nav */
+    }
+
     /* Overlay responsive adjustments */
+    .overlay {
+        bottom: 50px !important; /* Finisce sopra la barra mobile */
+        height: auto !important;
+    }
+
     .overlay-content {
-        max-height: calc(100vh - 140px); /* Margine di sicurezza dalla barra superiore e inferiore */
+        max-height: calc(100vh - 160px); /* Margine di sicurezza maggiore */
         overflow-y: auto;
         width: 85%;
         padding: 20px;

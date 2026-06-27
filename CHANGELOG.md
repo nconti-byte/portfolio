@@ -198,6 +198,12 @@ Tutte le modifiche e gli aggiornamenti apportati al progetto Portfolio saranno d
 - **Posizionamento Task Switcher**: Sostituita l'altezza calcolata con un posizionamento `bottom: 50px` per il Task Switcher, garantendo che non si sovrapponga mai alla barra di navigazione, indipendentemente dalle variazioni dell'altezza del viewport su browser mobile (es. comparsa/scomparsa barra degli indirizzi).
 - **Git**: Iniziato il tracciamento delle modifiche tramite commit Git dettagliati per ogni aggiornamento.
 
+### 21:55 (27/06/2026)
+- **Ottimizzazione Layout Mobile (Safe Area)**: Risolti problemi di visibilità degli elementi su schermi piccoli e corti.
+- **Overlay Responsive**: Modificata la logica degli overlay (Cookie e Account) su mobile: ora terminano esattamente sopra la barra di navigazione (`bottom: 50px`), garantendo che i pulsanti inferiori (es. "Continua senza account") siano sempre visibili e cliccabili.
+- **Fix Scrolling**: Aumentato il padding inferiore (`padding-bottom: 100px`) in tutte le pagine interne (Bio, Portfolio, Progetti) e nelle finestre di sistema su mobile. Questo assicura che l'ultima riga di testo o l'ultimo elemento di una pagina scrollabile rimangano sempre al di sopra della barra di navigazione mobile.
+- **Finestre PDF Mobile**: Aggiornato il posizionamento delle finestre PDF su mobile utilizzando `bottom: 50px` invece di un'altezza fissa, migliorando la compatibilità con diversi rapporti d'aspetto.
+
 ### 21:15 (27/06/2026)
 - **Ottimizzazione Responsive Overlays**: Implementata la responsività per gli overlay iniziali (Cookie e Account). Aggiunta un'altezza massima dinamica (`max-height`) e scorrimento interno per evitare che i pulsanti finiscano sotto la barra di navigazione mobile su schermi corti.
 - **Fix Scroll Pagine Interne**: Aggiunto un padding inferiore di 60px a tutte le pagine interne (Bio, Portfolio, Lavori, Tutorial) su mobile. Questo garantisce che l'ultima parte del testo sia sempre leggibile e non venga coperta dalla barra di navigazione mobile durante lo scroll.

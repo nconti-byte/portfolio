@@ -92,6 +92,6 @@ img:hover {
 
 @media (max-width: 768px) {
     body {
-        padding-bottom: 60px; /* Spazio per evitare che il contenuto finisca sotto la mobile-nav */
+        padding-bottom: 100px; /* Aumentato per garantire che l'ultima riga sia leggibile sopra la mobile-nav */
     }
 }

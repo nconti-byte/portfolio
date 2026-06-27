@@ -108,6 +108,12 @@ Questo documento descrive le logiche avanzate implementate nel sito per simulare
 - Z-Index Elevato: La barra .mobile-nav ha ora uno z-index di 2500, posizionandola sopra il Task Switcher (1500) e gli overlay standard (2000). Questo garantisce che i pulsanti di navigazione (Recenti, Home, Indietro) rimangano sempre visibili e cliccabili.
 - Posizionamento Bottom-Safe: Il Task Switcher non utilizza più un'altezza calcolata basata su 100vh, che può variare sui browser mobile a causa della barra degli indirizzi dinamica. Al suo posto, utilizza un posizionamento bottom: 50px, ancorandosi esattamente sopra la barra di navigazione mobile indipendentemente dalle variazioni di altezza del viewport. Questo previene sovrapposizioni accidentali che potrebbero bloccare l'utente all'interno dell'overlay.
 
+19. OTTIMIZZAZIONE AREA DI SICUREZZA (Safe Area Mobile)
+- Per evitare che elementi interattivi o testi finiscano sotto la barra di navigazione mobile (.mobile-nav), sono state apportate le seguenti modifiche:
+- Overlay Responsive: Gli overlay iniziali (Cookie e Account) su mobile sono ora ancorati a bottom: 50px. Questo sposta l'intero contenitore verso l'alto, assicurando che anche su schermi molto corti, i pulsanti posizionati in basso (come "Continua senza account") rimangano nell'area visibile e non vengano coperti dalla barra dei tasti.
+- Padding di Cortesia: È stato implementato un padding-bottom generoso (fino a 100px) in tutte le pagine caricate tramite iframe e nelle finestre di sistema. Questo "cuscinetto" assicura che, arrivati alla fine dello scorrimento, l'ultimo contenuto utile si trovi sempre ben al di sopra della barra di navigazione, garantendo la massima leggibilità.
+- Flessibilità Finestre: Le finestre PDF su mobile utilizzano ora un sistema di posizionamento top/bottom combinato che le rende indipendenti dalle variazioni di altezza del viewport (vh), mantenendo sempre il margine corretto dalla barra superiore e inferiore.
+
 19. OTTIMIZZAZIONE RESPONSIVE E PUNTI CIECHI (Mobile)
 - Per evitare che elementi interattivi o testi finiscano sotto la barra di navigazione mobile (.mobile-nav), sono state implementate due soluzioni:
 - Overlays Responsive: Gli overlay di Cookie e Account hanno ora una max-height: calc(100vh - 140px) e overflow-y: auto. Questo assicura che, anche su schermi molto corti, l'intero contenuto (inclusi i pulsanti di azione) rimanga all'interno dell'area visibile e sia scorrevole se necessario.
