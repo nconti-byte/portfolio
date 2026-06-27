@@ -89,3 +89,9 @@ img:hover {
     text-decoration: none;
     font-weight: bold;
 }
+
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 60px; /* Spazio per evitare che il contenuto finisca sotto la mobile-nav */
+    }
+}
