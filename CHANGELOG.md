@@ -232,3 +232,9 @@ Tutte le modifiche e gli aggiornamenti apportati al progetto Portfolio saranno d
 - **Restyling Copyright Bar**: Trasformata la barra in un rettangolo "glassmorphism" con sfondo semitrasparente e bordi arrotondati.
 - **Visibilità**: Testo impostato su bianco puro (`#ffffff`) per una leggibilità ottimale su ogni sfondo.
 - **Layout Mobile Avanzato**: Spostata la barra dei copyright all'estremo fondo dello schermo su mobile, alzando proporzionalmente la barra di navigazione e tutte le finestre/overlay per garantire che nulla si sovrapponga.
+
+### 10:40 (01/07/2026)
+- **Riprogettazione Bottom Bar**: Creata una barra di sistema inferiore (`.bottom-system-bar`) a tutta larghezza, coerente con la Top Bar superiore.
+- **Unificazione Mobile**: Su mobile, la barra inferiore ospita ora sia i tasti di navigazione (Recenti, Home, Indietro) che la dicitura di copyright, riducendo il numero di elementi sovrapposti.
+- **Design PC**: Su desktop, la barra inferiore è una sottile striscia semitrasparente (30px) che attraversa tutto lo schermo da sinistra a destra, contenendo il copyright centrato.
+- **Ottimizzazione Z-Index**: Rinforzata la gerarchia dei livelli per garantire che la barra inferiore rimanga sempre sopra i contenuti ma sotto le finestre attive.

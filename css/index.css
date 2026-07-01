@@ -20,28 +20,41 @@
     --window-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
 }
 
-.footer-copyright {
+/* Bottom System Bar */
+.bottom-system-bar {
     position: fixed;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 500;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px; /* Small height for PC */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .bottom-system-bar {
+    background: rgba(0, 0, 0, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-buttons {
+    display: none; /* Hidden on PC */
+}
+
+.footer-copyright {
     font-size: 0.75rem;
     color: #ffffff;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    padding: 6px 15px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
     white-space: nowrap;
     pointer-events: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode .footer-copyright {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 * {
@@ -926,21 +939,10 @@ h1, h2, h3 {
         padding-bottom: 80px !important; /* Spazio extra per evitare che il contenuto finisca sotto la mobile-nav */
     }
 
-    .footer-copyright {
-        bottom: 5px; /* Al centro sotto i tasti */
-        font-size: 0.6rem;
-        padding: 4px 10px;
-    }
-
-    .mobile-nav {
-        display: flex;
-        bottom: 25px; /* Alzata per fare spazio al copyright sotto */
-    }
-
     .pdf-window {
         width: 100vw !important;
         top: 45px !important;
-        bottom: 75px !important; /* Alzata (25px copyright + 50px nav) */
+        bottom: 75px !important; /* Spazio per la bottom-system-bar */
         height: auto !important;
         left: 0 !important;
         border-radius: 0;
@@ -951,7 +953,7 @@ h1, h2, h3 {
         top: 45px;
         left: 0;
         right: 0;
-        bottom: 75px; /* Alzata (25px copyright + 50px nav) */
+        bottom: 75px; /* Spazio per la bottom-system-bar */
         background: rgba(0, 0, 0, 0.85);
         backdrop-filter: blur(20px);
         z-index: 1500;
@@ -963,16 +965,73 @@ h1, h2, h3 {
 
     /* Overlay responsive adjustments */
     .overlay {
-        bottom: 75px !important; /* Alzata (25px copyright + 50px nav) */
+        bottom: 75px !important; /* Spazio per la bottom-system-bar */
         height: auto !important;
     }
 
     .overlay-content {
-        max-height: calc(100vh - 160px); /* Margine di sicurezza maggiore */
+        max-height: calc(100vh - 160px); 
         overflow-y: auto;
         width: 85%;
         padding: 20px;
         gap: 15px;
+    }
+
+    .footer-copyright {
+        font-size: 0.65rem;
+        opacity: 0.8;
+        color: white;
+        background: none;
+        backdrop-filter: none;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        position: static;
+        transform: none;
+    }
+
+    .bottom-system-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 75px; /* Più alta per mobile (tasti + copyright) */
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(15px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding-bottom: 5px;
+        z-index: 2500;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-nav-buttons {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .mobile-nav-btn {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-nav-btn i {
+        width: 24px;
+        height: 24px;
+    }
+
+    .mobile-nav {
+        display: none;
     }
 
     .overlay-buttons {

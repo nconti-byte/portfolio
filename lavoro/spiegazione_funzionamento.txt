@@ -123,11 +123,11 @@ Questo documento descrive le logiche avanzate implementate nel sito per simulare
 - Variabili CSS: Il tema è gestito tramite il raddoppio delle variabili CSS. In Dark Mode, le variabili --white e --bg-color vengono invertite con tonalità antracite e grigio fumo, mentre i testi passano a tonalità off-white per evitare l'abbagliamento.
 - Dark Glass: L'effetto glassmorphism è stato scurito aumentando l'opacità dello sfondo nero e riducendo quella dei bordi, per un look più moderno e coerente con il tema scuro.
 
-21. BARRA DI COPYRIGHT
-- È stata aggiunta una barra fissa (.footer-copyright) per i diritti d'autore.
-- Design: Si presenta come un rettangolo semitrasparente (glassmorphism) con testo bianco, bordi arrotondati e un leggero effetto blur.
-- Posizionamento PC: Centrata in fondo, a 10px dal bordo inferiore, sotto il Dock.
-- Posizionamento Mobile: Per massimizzare lo spazio utile, la barra è posizionata all'estremo fondo (5px dal bordo). La barra di navigazione mobile (.mobile-nav) è stata alzata di 25px per "galleggiare" sopra di essa, e di conseguenza tutte le finestre e gli overlay sono stati riposizionati per terminare esattamente dove inizia la nuova barra dei tasti. Questo crea un layout a strati pulito e professionale.
+21. BARRA DI SISTEMA INFERIORE (Bottom Bar)
+- È stata implementata una barra di sistema inferiore (.bottom-system-bar) a tutta larghezza (100%), speculare alla Top Bar.
+- Funzionamento PC: La barra è alta 30px, semitrasparente con effetto glassmorphism e contiene il copyright centrato. Attraversa tutto lo schermo da sinistra a destra.
+- Funzionamento Mobile: La barra diventa più alta (75px) per ospitare su due livelli i tasti di navigazione (Recenti, Home, Indietro) e, subito sotto di essi, la dicitura di copyright. Questo unifica l'interfaccia eliminando box multipli e sovrapposizioni.
+- Coerenza Visiva: La barra utilizza le stesse variabili CSS della Top Bar per trasparenza, blur e bordi, adattandosi automaticamente alla Dark Mode. Tutte le finestre e gli overlay sono stati ricalibrati per terminare esattamente sul bordo superiore di questa barra.
 
 19. OTTIMIZZAZIONE RESPONSIVE E PUNTI CIECHI (Mobile)
 - Per evitare che elementi interattivi o testi finiscano sotto la barra di navigazione mobile (.mobile-nav), sono state implementate due soluzioni:
