@@ -238,3 +238,4 @@ Tutte le modifiche e gli aggiornamenti apportati al progetto Portfolio saranno d
 - **Unificazione Mobile**: Su mobile, la barra inferiore ospita ora sia i tasti di navigazione (Recenti, Home, Indietro) che la dicitura di copyright, riducendo il numero di elementi sovrapposti.
 - **Design PC**: Su desktop, la barra inferiore è una sottile striscia semitrasparente (30px) che attraversa tutto lo schermo da sinistra a destra, contenendo il copyright centrato.
 - **Ottimizzazione Z-Index**: Rinforzata la gerarchia dei livelli per garantire che la barra inferiore rimanga sempre sopra i contenuti ma sotto le finestre attive.
+- **Posizionamento Dock**: Alzato il Dock su PC a `bottom: 45px` per evitare che si sovrapponga alla nuova barra di sistema inferiore.

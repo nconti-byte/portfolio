@@ -351,7 +351,7 @@ h1, h2, h3 {
 /* Dock (macOS style) */
 .dock-container {
     position: fixed;
-    bottom: 20px;
+    bottom: 45px; /* Alzato per non sovrapporsi alla nuova barra inferiore (30px) */
     left: 0;
     width: 100%;
     display: flex;
