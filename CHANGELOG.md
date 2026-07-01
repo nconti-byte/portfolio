@@ -218,3 +218,6 @@ Tutte le modifiche e gli aggiornamenti apportati al progetto Portfolio saranno d
 - **Error Handling**: Aggiunti controlli di esistenza per il tasto Dark Mode e per la libreria Lucide Icons, garantendo che il resto del sito continui a funzionare anche se un singolo componente fallisce.
 - **Sincronizzazione Iframe**: Migliorata la logica di sincronizzazione del tema negli iframe per evitare errori di riferimento variabili.
 - **Git**: Effettuato il push immediato per ripristinare la funzionalità del sito online.
+
+### 10:05 (01/07/2026)
+- **Aggiornamento Icone Tema**: Invertite le icone del selettore tema per una migliore chiarezza visiva. Ora il Sole rappresenta la modalità chiara e la Luna rappresenta la modalità scura.

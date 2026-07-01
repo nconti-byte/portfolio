@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const setTheme = (isDark, save = true) => {
             if (isDark) {
                 body.classList.add('dark-mode');
-                if (themeIcon) themeIcon.setAttribute('data-lucide', 'sun');
+                if (themeIcon) themeIcon.setAttribute('data-lucide', 'moon');
                 if (save) localStorage.setItem('theme', 'dark');
             } else {
                 body.classList.remove('dark-mode');
-                if (themeIcon) themeIcon.setAttribute('data-lucide', 'moon');
+                if (themeIcon) themeIcon.setAttribute('data-lucide', 'sun');
                 if (save) localStorage.setItem('theme', 'light');
             }
             if (window.lucide) lucide.createIcons();
