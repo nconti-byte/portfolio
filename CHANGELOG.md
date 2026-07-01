@@ -227,3 +227,8 @@ Tutte le modifiche e gli aggiornamenti apportati al progetto Portfolio saranno d
 - **Integrazione Nicolò Conti**: La barra riporta il testo "© 2026 Nicolò Conti - Tutti i diritti riservati".
 - **Design Discreto**: Utilizzato un font ridotto e una trasparenza elevata per rendere la barra leggibile ma non invasiva, posizionandola in fondo allo schermo.
 - **Layout Mobile**: Su dispositivi mobile, la barra si sposta automaticamente sopra la barra di navigazione per rimanere visibile senza interferire con i tasti di sistema.
+
+### 10:30 (01/07/2026)
+- **Restyling Copyright Bar**: Trasformata la barra in un rettangolo "glassmorphism" con sfondo semitrasparente e bordi arrotondati.
+- **Visibilità**: Testo impostato su bianco puro (`#ffffff`) per una leggibilità ottimale su ogni sfondo.
+- **Layout Mobile Avanzato**: Spostata la barra dei copyright all'estremo fondo dello schermo su mobile, alzando proporzionalmente la barra di navigazione e tutte le finestre/overlay per garantire che nulla si sovrapponga.

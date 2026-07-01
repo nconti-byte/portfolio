@@ -125,8 +125,9 @@ Questo documento descrive le logiche avanzate implementate nel sito per simulare
 
 21. BARRA DI COPYRIGHT
 - È stata aggiunta una barra fissa (.footer-copyright) per i diritti d'autore.
-- Posizionamento Dinamico: Su desktop si trova al centro, a 5px dal bordo inferiore. Su mobile, per evitare sovrapposizioni con la barra di navigazione (.mobile-nav), si sposta automaticamente a 55px dal fondo, posizionandosi esattamente sopra i tasti Recenti, Home e Indietro.
-- Visibilità: Utilizza un'opacità ridotta (0.5 su Light Mode, 0.3 su Dark Mode) per rimanere discreta rispetto allo sfondo e ai contenuti del desktop.
+- Design: Si presenta come un rettangolo semitrasparente (glassmorphism) con testo bianco, bordi arrotondati e un leggero effetto blur.
+- Posizionamento PC: Centrata in fondo, a 10px dal bordo inferiore, sotto il Dock.
+- Posizionamento Mobile: Per massimizzare lo spazio utile, la barra è posizionata all'estremo fondo (5px dal bordo). La barra di navigazione mobile (.mobile-nav) è stata alzata di 25px per "galleggiare" sopra di essa, e di conseguenza tutte le finestre e gli overlay sono stati riposizionati per terminare esattamente dove inizia la nuova barra dei tasti. Questo crea un layout a strati pulito e professionale.
 
 19. OTTIMIZZAZIONE RESPONSIVE E PUNTI CIECHI (Mobile)
 - Per evitare che elementi interattivi o testi finiscano sotto la barra di navigazione mobile (.mobile-nav), sono state implementate due soluzioni:

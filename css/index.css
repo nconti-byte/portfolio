@@ -22,19 +22,26 @@
 
 .footer-copyright {
     position: fixed;
-    bottom: 5px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 500;
-    font-size: 0.7rem;
-    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    padding: 6px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     white-space: nowrap;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode .footer-copyright {
-    color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 * {
@@ -920,13 +927,43 @@ h1, h2, h3 {
     }
 
     .footer-copyright {
-        bottom: 55px; /* Sopra la mobile-nav */
+        bottom: 5px; /* Al centro sotto i tasti */
         font-size: 0.6rem;
+        padding: 4px 10px;
+    }
+
+    .mobile-nav {
+        display: flex;
+        bottom: 25px; /* Alzata per fare spazio al copyright sotto */
+    }
+
+    .pdf-window {
+        width: 100vw !important;
+        top: 45px !important;
+        bottom: 75px !important; /* Alzata (25px copyright + 50px nav) */
+        height: auto !important;
+        left: 0 !important;
+        border-radius: 0;
+    }
+
+    .task-switcher {
+        position: fixed;
+        top: 45px;
+        left: 0;
+        right: 0;
+        bottom: 75px; /* Alzata (25px copyright + 50px nav) */
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(20px);
+        z-index: 1500;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        color: white;
     }
 
     /* Overlay responsive adjustments */
     .overlay {
-        bottom: 50px !important; /* Finisce sopra la barra mobile */
+        bottom: 75px !important; /* Alzata (25px copyright + 50px nav) */
         height: auto !important;
     }
 
