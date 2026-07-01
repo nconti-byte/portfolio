@@ -4,16 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     
     if (themeToggleBtn) {
-        const themeIcon = themeToggleBtn.querySelector('i');
-
         const setTheme = (isDark, save = true) => {
             if (isDark) {
                 body.classList.add('dark-mode');
-                if (themeIcon) themeIcon.setAttribute('data-lucide', 'moon');
+                themeToggleBtn.innerHTML = '<i data-lucide="moon"></i>';
                 if (save) localStorage.setItem('theme', 'dark');
             } else {
                 body.classList.remove('dark-mode');
-                if (themeIcon) themeIcon.setAttribute('data-lucide', 'sun');
+                themeToggleBtn.innerHTML = '<i data-lucide="sun"></i>';
                 if (save) localStorage.setItem('theme', 'light');
             }
             if (window.lucide) lucide.createIcons();
