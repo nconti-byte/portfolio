@@ -2,55 +2,58 @@ document.addEventListener('DOMContentLoaded', () => {
     // Dark Mode Logic
     const themeToggleBtn = document.getElementById('theme-toggle-btn');
     const body = document.body;
-    const themeIcon = themeToggleBtn.querySelector('i');
+    
+    if (themeToggleBtn) {
+        const themeIcon = themeToggleBtn.querySelector('i');
 
-    const setTheme = (isDark, save = true) => {
-        if (isDark) {
-            body.classList.add('dark-mode');
-            themeIcon.setAttribute('data-lucide', 'sun');
-            if (save) localStorage.setItem('theme', 'dark');
-        } else {
-            body.classList.remove('dark-mode');
-            themeIcon.setAttribute('data-lucide', 'moon');
-            if (save) localStorage.setItem('theme', 'light');
-        }
-        lucide.createIcons();
-        
-        // Sync open iframes
-        document.querySelectorAll('.pdf-iframe').forEach(iframe => {
-            try {
-                if (iframe.contentDocument && iframe.contentDocument.body) {
-                    if (isDark) {
-                        iframe.contentDocument.body.classList.add('dark-mode');
-                    } else {
-                        iframe.contentDocument.body.classList.remove('dark-mode');
+        const setTheme = (isDark, save = true) => {
+            if (isDark) {
+                body.classList.add('dark-mode');
+                if (themeIcon) themeIcon.setAttribute('data-lucide', 'sun');
+                if (save) localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                if (themeIcon) themeIcon.setAttribute('data-lucide', 'moon');
+                if (save) localStorage.setItem('theme', 'light');
+            }
+            if (window.lucide) lucide.createIcons();
+            
+            // Sync open iframes
+            document.querySelectorAll('.pdf-iframe').forEach(iframe => {
+                try {
+                    if (iframe.contentDocument && iframe.contentDocument.body) {
+                        if (isDark) {
+                            iframe.contentDocument.body.classList.add('dark-mode');
+                        } else {
+                            iframe.contentDocument.body.classList.remove('dark-mode');
+                        }
                     }
+                } catch (e) {
+                    console.log("Cannot sync iframe (cross-origin or not loaded)");
                 }
-            } catch (e) {
-                console.log("Cannot sync iframe (cross-origin or not loaded)");
+            });
+        };
+
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = body.classList.contains('dark-mode');
+            setTheme(!isDark);
+        });
+
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        systemPrefersDark.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches, false);
             }
         });
-    };
 
-    themeToggleBtn.addEventListener('click', () => {
-        const isDark = body.classList.contains('dark-mode');
-        setTheme(!isDark);
-    });
-
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    systemPrefersDark.addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-            setTheme(e.matches, false);
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            setTheme(true, false);
+        } else if (savedTheme === 'light') {
+            setTheme(false, false);
+        } else {
+            setTheme(systemPrefersDark.matches, false);
         }
-    });
-
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        setTheme(true, false);
-    } else if (savedTheme === 'light') {
-        setTheme(false, false);
-    } else {
-        setTheme(systemPrefersDark.matches, false);
     }
 
     // Background Slideshow
@@ -364,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(deleteBtn);
             notesList.appendChild(container);
         });
-        lucide.createIcons();
+        if (window.lucide) lucide.createIcons();
     }
 
     function deleteNote(id) {
@@ -648,7 +651,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             dockItem.addEventListener('click', () => restoreWindow(windowEl));
             dock.appendChild(dockItem);
-            if (lucideIcon) lucide.createIcons();
+            if (lucideIcon && window.lucide) lucide.createIcons();
         }
     }
 
@@ -669,7 +672,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Apply theme to iframe when it loads
         iframe.addEventListener('load', () => {
             try {
-                if (body.classList.contains('dark-mode')) {
+                if (document.body.classList.contains('dark-mode')) {
                     iframe.contentDocument.body.classList.add('dark-mode');
                 }
             } catch (e) {
@@ -876,7 +879,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             taskList.appendChild(item);
         });
-        lucide.createIcons();
+        if (window.lucide) lucide.createIcons();
     }
 
     if (mobileRecentBtn) {

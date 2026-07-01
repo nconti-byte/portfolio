@@ -213,7 +213,8 @@ Tutte le modifiche e gli aggiornamenti apportati al progetto Portfolio saranno d
 - **Design Scuro (Dark Glass)**: Creato un set di variabili CSS specifico per la Dark Mode che scurisce le finestre, inverte i colori del testo e rende l'effetto glassmorphism più profondo e fumè.
 - **Aggiornamento Stili**: Aggiornati tutti i file CSS del progetto (`bio.css`, `portfolio.css`, ecc.) per supportare il nuovo tema scuro.
 
-### 21:15 (27/06/2026)
-- **Ottimizzazione Responsive Overlays**: Implementata la responsività per gli overlay iniziali (Cookie e Account). Aggiunta un'altezza massima dinamica (`max-height`) e scorrimento interno per evitare che i pulsanti finiscano sotto la barra di navigazione mobile su schermi corti.
-- **Fix Scroll Pagine Interne**: Aggiunto un padding inferiore di 60px a tutte le pagine interne (Bio, Portfolio, Lavori, Tutorial) su mobile. Questo garantisce che l'ultima parte del testo sia sempre leggibile e non venga coperta dalla barra di navigazione mobile durante lo scroll.
-- **Miglioramento Usabilità Mobile**: Rafforzata la coerenza visiva e funzionale su diverse risoluzioni smartphone, eliminando i punti ciechi nell'interfaccia.
+### 09:55 (01/07/2026)
+- **Fix Robustezza JavaScript**: Risolto un problema che causava il blocco del sito (sfondo nero e icone non cliccabili) in caso di mancato caricamento di alcuni elementi o problemi di cache del browser.
+- **Error Handling**: Aggiunti controlli di esistenza per il tasto Dark Mode e per la libreria Lucide Icons, garantendo che il resto del sito continui a funzionare anche se un singolo componente fallisce.
+- **Sincronizzazione Iframe**: Migliorata la logica di sincronizzazione del tema negli iframe per evitare errori di riferimento variabili.
+- **Git**: Effettuato il push immediato per ripristinare la funzionalità del sito online.
