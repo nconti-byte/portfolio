@@ -123,6 +123,11 @@ Questo documento descrive le logiche avanzate implementate nel sito per simulare
 - Variabili CSS: Il tema è gestito tramite il raddoppio delle variabili CSS. In Dark Mode, le variabili --white e --bg-color vengono invertite con tonalità antracite e grigio fumo, mentre i testi passano a tonalità off-white per evitare l'abbagliamento.
 - Dark Glass: L'effetto glassmorphism è stato scurito aumentando l'opacità dello sfondo nero e riducendo quella dei bordi, per un look più moderno e coerente con il tema scuro.
 
+21. BARRA DI COPYRIGHT
+- È stata aggiunta una barra fissa (.footer-copyright) per i diritti d'autore.
+- Posizionamento Dinamico: Su desktop si trova al centro, a 5px dal bordo inferiore. Su mobile, per evitare sovrapposizioni con la barra di navigazione (.mobile-nav), si sposta automaticamente a 55px dal fondo, posizionandosi esattamente sopra i tasti Recenti, Home e Indietro.
+- Visibilità: Utilizza un'opacità ridotta (0.5 su Light Mode, 0.3 su Dark Mode) per rimanere discreta rispetto allo sfondo e ai contenuti del desktop.
+
 19. OTTIMIZZAZIONE RESPONSIVE E PUNTI CIECHI (Mobile)
 - Per evitare che elementi interattivi o testi finiscano sotto la barra di navigazione mobile (.mobile-nav), sono state implementate due soluzioni:
 - Overlays Responsive: Gli overlay di Cookie e Account hanno ora una max-height: calc(100vh - 140px) e overflow-y: auto. Questo assicura che, anche su schermi molto corti, l'intero contenuto (inclusi i pulsanti di azione) rimanga all'interno dell'area visibile e sia scorrevole se necessario.

@@ -221,3 +221,9 @@ Tutte le modifiche e gli aggiornamenti apportati al progetto Portfolio saranno d
 
 ### 10:05 (01/07/2026)
 - **Aggiornamento Icone Tema**: Invertite le icone del selettore tema per una migliore chiarezza visiva. Ora il Sole rappresenta la modalità chiara e la Luna rappresenta la modalità scura.
+
+### 10:20 (01/07/2026)
+- **Aggiunta Copyright Bar**: Inserita una barra dei crediti e copyright alla base del desktop.
+- **Integrazione Nicolò Conti**: La barra riporta il testo "© 2026 Nicolò Conti - Tutti i diritti riservati".
+- **Design Discreto**: Utilizzato un font ridotto e una trasparenza elevata per rendere la barra leggibile ma non invasiva, posizionandola in fondo allo schermo.
+- **Layout Mobile**: Su dispositivi mobile, la barra si sposta automaticamente sopra la barra di navigazione per rimanere visibile senza interferire con i tasti di sistema.

@@ -20,6 +20,23 @@
     --window-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
 }
 
+.footer-copyright {
+    position: fixed;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 500;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.dark-mode .footer-copyright {
+    color: rgba(255, 255, 255, 0.3);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -900,6 +917,11 @@ h1, h2, h3 {
 
     .window-content {
         padding-bottom: 80px !important; /* Spazio extra per evitare che il contenuto finisca sotto la mobile-nav */
+    }
+
+    .footer-copyright {
+        bottom: 55px; /* Sopra la mobile-nav */
+        font-size: 0.6rem;
     }
 
     /* Overlay responsive adjustments */
