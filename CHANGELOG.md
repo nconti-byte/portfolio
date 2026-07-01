@@ -204,6 +204,15 @@ Tutte le modifiche e gli aggiornamenti apportati al progetto Portfolio saranno d
 - **Fix Scrolling**: Aumentato il padding inferiore (`padding-bottom: 100px`) in tutte le pagine interne (Bio, Portfolio, Progetti) e nelle finestre di sistema su mobile. Questo assicura che l'ultima riga di testo o l'ultimo elemento di una pagina scrollabile rimangano sempre al di sopra della barra di navigazione mobile.
 - **Finestre PDF Mobile**: Aggiornato il posizionamento delle finestre PDF su mobile utilizzando `bottom: 50px` invece di un'altezza fissa, migliorando la compatibilità con diversi rapporti d'aspetto.
 
+### 09:40 (01/07/2026)
+- **Implementazione Dark Mode**: Aggiunta la modalità scura completa al sistema.
+- **Rilevamento Automatico**: Il sito rileva ora automaticamente la preferenza del sistema operativo dell'utente (chiaro/scuro) tramite query media CSS.
+- **Controllo Manuale**: Inserito un tasto "Luna/Sole" nella barra superiore (a destra, accanto alla data) per permettere il cambio manuale del tema.
+- **Persistenza Tema**: La scelta dell'utente viene salvata nel `localStorage` per essere mantenuta alle visite successive.
+- **Sincronizzazione Iframe**: Implementata una logica JavaScript per propagare automaticamente il cambio di tema a tutti i documenti PDF (iframe) aperti, garantendo una coerenza visiva totale.
+- **Design Scuro (Dark Glass)**: Creato un set di variabili CSS specifico per la Dark Mode che scurisce le finestre, inverte i colori del testo e rende l'effetto glassmorphism più profondo e fumè.
+- **Aggiornamento Stili**: Aggiornati tutti i file CSS del progetto (`bio.css`, `portfolio.css`, ecc.) per supportare il nuovo tema scuro.
+
 ### 21:15 (27/06/2026)
 - **Ottimizzazione Responsive Overlays**: Implementata la responsività per gli overlay iniziali (Cookie e Account). Aggiunta un'altezza massima dinamica (`max-height`) e scorrimento interno per evitare che i pulsanti finiscano sotto la barra di navigazione mobile su schermi corti.
 - **Fix Scroll Pagine Interne**: Aggiunto un padding inferiore di 60px a tutte le pagine interne (Bio, Portfolio, Lavori, Tutorial) su mobile. Questo garantisce che l'ultima parte del testo sia sempre leggibile e non venga coperta dalla barra di navigazione mobile durante lo scroll.

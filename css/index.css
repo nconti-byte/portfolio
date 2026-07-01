@@ -9,6 +9,17 @@
     --window-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
+.dark-mode {
+    --primary-color: #f5f6fa;
+    --secondary-color: #0fbcf9;
+    --accent-color: #00cec9;
+    --bg-color: #1e272e;
+    --white: #2d3436; /* Fondo finestre in dark mode */
+    --glass-bg: rgba(0, 0, 0, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --window-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -271,6 +282,29 @@ h1, h2, h3 {
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+.theme-toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.theme-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.theme-toggle-btn i {
+    width: 20px;
+    height: 20px;
 }
 
 .top-bar-right span {

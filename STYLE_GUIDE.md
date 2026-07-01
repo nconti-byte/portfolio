@@ -15,6 +15,13 @@ Questo documento riassume la palette colori e i font utilizzati all'interno del 
 | **Bordo Vetro** | `--glass-border` | `rgba(255, 255, 255, 0.3)` | Bordi elementi glassmorphism |
 | **Ombra Finestra** | `--window-shadow` | `rgba(31, 38, 135, 0.37)` | Ombreggiatura per profondità |
 
+### 🌙 Variabili Dark Mode
+Quando la classe `.dark-mode` è attiva, le variabili cambiano come segue:
+- `--primary-color`: `#f5f6fa` (Testo chiaro)
+- `--bg-color`: `#1e272e` (Grigio scuro)
+- `--white`: `#2d3436` (Antracite per sfondi finestre)
+- `--glass-bg`: `rgba(0, 0, 0, 0.5)` (Vetro fumè)
+
 ---
 
 ## 🔡 Tipografia

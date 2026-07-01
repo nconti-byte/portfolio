@@ -6,6 +6,12 @@
     --white: #ffffff;
 }
 
+body.dark-mode {
+    --primary-color: #f5f6fa;
+    --bg-color: #1e272e;
+    --white: #2d3436;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +25,7 @@ html, body {
 }
 
 body {
-    background: white;
+    background: var(--white);
     overflow-y: auto;
     overflow-x: hidden;
     color: var(--primary-color);
